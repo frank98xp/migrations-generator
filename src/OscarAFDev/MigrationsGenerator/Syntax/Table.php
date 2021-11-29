@@ -23,7 +23,10 @@ abstract class Table extends \Way\Generators\Syntax\Table{
 	{
 		$table = substr($table, strlen(\DB::getTablePrefix()));
 		$this->table = $table;
-        if (!is_null($connection)) $method = 'connection(\''.$connection.'\')->'.$method;
+		
+        //frank,註解掉此行
+		//if (!is_null($connection)) $method = 'connection(\''.$connection.'\')->'.$method;
+		
 		$compiled = $this->compiler->compile($this->getTemplate(), ['table'=>$table,'method'=>$method]);
 		return $this->replaceFieldsWith($this->getItems($fields), $compiled);
 	}
